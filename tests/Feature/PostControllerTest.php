@@ -24,4 +24,16 @@ class PostControllerTest extends TestCase
             ->assertSeeText('新增');
         //$this->assertTrue(true);
     }
+    public function testPostCreateData()
+    {
+        $data =[
+            'title',
+            'content',
+        ];
+        $response = $this ->post('posts',$data);
+        $response->assertStatus(302)
+            ->assertRedirect('posts/create')
+            ->assertSessionHas('success',true);
+        //$this->assertTrue(true);
+    }
 }
