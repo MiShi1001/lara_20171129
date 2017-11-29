@@ -2,11 +2,13 @@
 
 namespace Tests\Feature;
 
+use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class PostControllerTest extends TestCase
 {
+    use WithoutMiddleware;
     /**
      * A basic test example.
      *
@@ -27,8 +29,8 @@ class PostControllerTest extends TestCase
     public function testPostCreateData()
     {
         $data =[
-            'title',
-            'content',
+            'title'=>'testtitle',
+            'content'=>'testcontent',
         ];
         $response = $this ->post('posts',$data);
         $response->assertStatus(302)
