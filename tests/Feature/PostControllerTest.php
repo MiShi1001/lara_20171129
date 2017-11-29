@@ -16,4 +16,12 @@ class PostControllerTest extends TestCase
     {
         $this->assertTrue(true);
     }
+    public function testPostCreatePage()
+    {
+        $response = $this ->get('post/create');
+        $response->assertStatus(200)
+            ->assertViewIs('posts.create')
+            ->assertSeeText('新增');
+        //$this->assertTrue(true);
+    }
 }
